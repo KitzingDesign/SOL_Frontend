@@ -1,5 +1,4 @@
 import "./App.css";
-import BottomBar from "./components/BottomBar";
 import PlaceCard from "./components/placeCard";
 
 const DUMMY_DATA = [
@@ -26,8 +25,9 @@ const DUMMY_DATA = [
 function App() {
 	return (
 		<>
-			<PlaceCard data={DUMMY_DATA[0]} />
-			<BottomBar />
+			{DUMMY_DATA.map((place) => (
+				<PlaceCard data={place} />
+			))}
 		</>
 	);
 }

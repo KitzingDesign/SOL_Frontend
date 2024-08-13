@@ -4,17 +4,24 @@ import { motion } from "framer-motion";
 import classes from "./placeCard.module.css";
 import chevron from "../assets/icons/chevron.svg";
 import sunIcon from "../assets/icons/sun.svg";
+import PlaceCardExpansion from "./placeCardExpansion";
 
 export default function PlaceCard({ data }) {
 	const [isExpanded, setIsExpanded] = useState(false);
 
-	function expandHandler() {
+	function toggleExpand() {
 		setIsExpanded((prev) => !prev);
 	}
 
 	return (
-		<div className={classes.container}>
-			<div className={classes.innerContatiner}>
+		<motion.div
+			layout
+			onClick={() => {
+				setIsExpanded(!isExpanded);
+			}}
+			className={classes.container}
+		>
+			<motion.div layout="position" className={classes.innerContatiner}>
 				<div className={classes.leftContainer}>
 					<img
 						className={classes.imgPlace}
@@ -43,7 +50,7 @@ export default function PlaceCard({ data }) {
 						</div>
 					</div>
 				</div>
-				<button onClick={expandHandler}>
+				<button onClick={toggleExpand}>
 					<motion.img
 						animate={{ rotate: isExpanded ? 180 : 0 }}
 						className={classes.Svg}
@@ -51,7 +58,8 @@ export default function PlaceCard({ data }) {
 						alt="Icon with an arrow pointing downwards"
 					/>
 				</button>
-			</div>
-		</div>
+			</motion.div>
+			{isExpanded && <PlaceCardExpansion data />}
+		</motion.div>
 	);
 }
