@@ -3,7 +3,8 @@ import Divider from "@mui/material/Divider";
 import { forwardRef } from "react";
 
 import classes from "./placeCardExpansion.module.css";
-import sunIcon from "../assets/icons/sun.svg";
+import tableIcon from "../assets/icons/table.svg";
+import watchIcon from "../assets/icons/watch.svg";
 import BeverageDisplay from "./beverageDisplay";
 
 export default function PlaceCardExpansion({ data }) {
@@ -36,20 +37,20 @@ export default function PlaceCardExpansion({ data }) {
 				<div className={classes.lowerTextContainer}>
 					<div>
 						<div className={classes.flexRow}>
-							<img {...animated} src={sunIcon} alt="An icon showing a sun" />
+							<img src={watchIcon} alt="An icon showing a watch" />
 
 							<p>{data.open ? `Stänger XX.XX` : `Öppnar XX.XX`}</p>
 						</div>
 						<div className={classes.flexRow}>
-							<img src={sunIcon} alt="An icon showing a sun" />
-							<p {...animated}>Enorm uteservering</p>
+							<img src={tableIcon} alt="An icon showing a table" />
+							<p>Enorm uteservering</p>
 						</div>
 					</div>
 					<div className={`${classes.flexColumn} `}>
-						<p {...animated}>Här var det dyrt</p>
-						<BeverageDisplay />
-						<BeverageDisplay />
-						<BeverageDisplay />
+						<p>Här var det dyrt</p>
+						<BeverageDisplay drink={{ sort: "beer", price: 25 }} />
+						<BeverageDisplay drink={{ sort: "wine", price: 30 }} />
+						<BeverageDisplay drink={{ sort: "drink", price: 20 }} />
 					</div>
 				</div>
 				<div>
