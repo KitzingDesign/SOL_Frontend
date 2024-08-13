@@ -20,42 +20,42 @@ export default function PlaceCardExpansion({ data }) {
 	const MotionDivider = motion(divider);
 
 	return (
-		<div>
+		<motion.div {...animated}>
 			<div className={classes.headerContainer}>
-				<MotionDivider {...animated} variant="middle" />
-				<motion.h2 {...animated} className={classes.title}>
+				<MotionDivider variant="middle" />
+				<h2 className={classes.title}>
 					{data.open
 						? "En svalkande bärs på en varm uteservering"
 						: "Lite väl tidigt för en bärs nu ..?"}
-				</motion.h2>
-				<motion.div {...animated}>
+				</h2>
+				<div>
 					<div className={classes.graph}></div>
-				</motion.div>
+				</div>
 			</div>
 			<div className={`${classes.flexRow} ${classes.lowerContainer}`}>
-				<motion.div {...animated} className={classes.lowerTextContainer}>
+				<div className={classes.lowerTextContainer}>
 					<div>
 						<div className={classes.flexRow}>
-							<img src={sunIcon} alt="An icon showing a sun" />
+							<img {...animated} src={sunIcon} alt="An icon showing a sun" />
 
 							<p>{data.open ? `Stänger XX.XX` : `Öppnar XX.XX`}</p>
 						</div>
 						<div className={classes.flexRow}>
 							<img src={sunIcon} alt="An icon showing a sun" />
-							<p>Enorm uteservering</p>
+							<p {...animated}>Enorm uteservering</p>
 						</div>
 					</div>
 					<div className={`${classes.flexColumn} `}>
-						<p>Här var det dyrt</p>
+						<p {...animated}>Här var det dyrt</p>
 						<BeverageDisplay />
 						<BeverageDisplay />
 						<BeverageDisplay />
 					</div>
-				</motion.div>
-				<motion.div {...animated}>
+				</div>
+				<div>
 					<div className={classes.map}></div>
-				</motion.div>
+				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import classes from "./placeCard.module.css";
 import chevron from "../assets/icons/chevron.svg";
@@ -21,7 +21,11 @@ export default function PlaceCard({ data }) {
 			}}
 			className={classes.container}
 		>
-			<motion.div layout="position" className={classes.innerContatiner}>
+			<motion.div
+				mode="wait"
+				layout="position"
+				className={classes.innerContatiner}
+			>
 				<div className={classes.leftContainer}>
 					<img
 						className={classes.imgPlace}
@@ -59,7 +63,9 @@ export default function PlaceCard({ data }) {
 					/>
 				</button>
 			</motion.div>
-			{isExpanded && <PlaceCardExpansion data />}
+			<AnimatePresence>
+				{isExpanded && <PlaceCardExpansion data />}
+			</AnimatePresence>
 		</motion.div>
 	);
 }
